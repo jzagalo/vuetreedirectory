@@ -1,20 +1,42 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <TreeBrowser :node="root" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import TreeBrowser from './components/TreeBrowser.vue';
 
 @Component({
   components: {
-    HelloWorld,
+    TreeBrowser,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  public root: any  =  {
+      name: '/',
+      children: [
+        {
+          name: 'music',
+          children: [
+            {
+              name: 'song.mp3'
+            },
+          ]
+        },
+        {
+          name: 'workspace',
+          children: [
+            {
+              name: 'source.js'
+            },
+          ]
+        }
+      ]
+  };
+}
 </script>
 
 <style>
